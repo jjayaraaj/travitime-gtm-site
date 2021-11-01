@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v1.9.8/dist/alpine.js" defer></script>
+    <title>Document</title>
+</head>
+
+<body class="" x-data="myApp()">
+
+    <nav class="bg-white filter  drop-shadow-md md:drop-shadow-xl py-3 px-3">
+        <div class="mx-auto md:max-w-7xl max-w-full">
+            <div class="flex justify-between ">
+                <!-- logo -->
+                <div>
+                    <img src="images/tt-logo.png" class="md:h-11 h-8" alt="">
+                </div>
+
+                <div class="flex items-center  ">
+                    <!--primarynav-->
+                    <div class="flex primary-nav md:mr-4 hidden md:block">
+                        <a href="#">Home</a>
+                        <a href="#">Features</a>
+                        <a href="#">How it Works?</a>
+                        <a href="#">Pricing</a>
+                        <a href="#">Resources</a>
+                    </div>
+                    <!-- secondary nav -->
+                    <div class="flex ">
+                        <div class="md:hidden block">
+                            <button class="pt-2 md:hidden block" x-on:click="isSidebarOpen = true ">
+                                <svg class="w-20 h-10" xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                    fill="currentColor" class="bi bi-filter-left" viewBox="0 0 16 16">
+                                    <path
+                                        d="M2 10.5a.5.5 0 0 1 .5-.5h3a.5.5 0 0 1 0 1h-3a.5.5 0 0 1-.5-.5zm0-3a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5zm0-3a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5z" />
+                                </svg>
+                            </button>
+                        </div>
+                        <div class="hidden md:block">
+                            <a class="btn text-white py-2 px-6 hover:bg-gray-900 md:mr-4 cursor-pointer">Sign up</a>
+                            <a class="btn text-white py-2 px-6">Login</a>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- banner -->
+    <div class="banner bg-gray-100 border">
+        <div
+            class="mx-auto md:max-w-7xl max-w-full flex-col md:flex-row flex md:justify-between items-center md:h-full">
+            <div class="flex items-center order-2 md:order-1">
+                <div class="text-center md:text-left">
+                    <p class="tt-text-blue-100 font-bold text-4xl ">Experience is everything.
+                    </p>
+                    <p class="tt-text-blue-100 font-normal text-3xl pt-2">Advance Your Tour Business with Travitime</p>
+                    <p class="px-4 md:px-0 w-full md:w-2/3 pt-6 pb-12">Travitime<sup>TM</sup> an online platform
+                        designed for
+                        travel
+                        agents,
+                        tour
+                        operators
+                        to modernize travel itineraries an provide seamless personal experience
+                        to their customers.</p>
+                    <a href="#" class="btn text-white py-2  px-6 w-auto">Get Started</a>
+                </div>
+            </div>
+            <div class=" order-1 md:order-2 md:flex-col flex-row    ">
+                <div class=" text-right md:pt-24 py-0 flex justify-center">
+                    <img src=" ./images/mobile-panel.png" class="w-2/3">
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <div class="h-40 md:block hidden"></div>
+    <!-- section3 -->
+    <div class="mx-auto md:max-w-7xl max-w-full">
+        <!-- digital itenary -->
+        <div class="grid md:grid-cols-2 px-8 md:px-0  gap-x-40 items-center">
+            <div class="order-2 md:order-1">
+                <p class="tt-text-blue-100 font-normal text-3xl py-3">Travitime for travel professionals,
+                    travel agencies, tour operators</p>
+                <p class="md:pb-12 pb-6">Online itinerary builder with powerful features to manage your customers
+                    and give them everything they need while travelling at a single place.</p>
+
+                <template class="" x-for="accordion in accordions" :key="accordion.question">
+                    <div class="">
+                        <button class="md:py-5 py-3 border-b border-red-200 flex justify-between items-center w-full"
+                            x-on:click="openDiv(accordion)">
+                            <div class="tt-text-orange-100" x-text="accordion.question"></div>
+
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                x-show="accordion.isOpen" class="bi bi-caret-up text-red-300" viewBox="0 0 16 16">
+                                <path
+                                    d="M3.204 11h9.592L8 5.519 3.204 11zm-.753-.659 4.796-5.48a1 1 0 0 1 1.506 0l4.796 5.48c.566.647.106 1.659-.753 1.659H3.204a1 1 0 0 1-.753-1.659z" />
+                            </svg>
+                            <svg x-show="!accordion.isOpen" xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                fill="currentColor" class="bi bi-caret-down-fill fill-current text-red-600"
+                                viewBox="0 0 16 16">
+                                <path
+                                    d="M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z" />
+                            </svg>
+                        </button>
+                        <div x-show="accordion.isOpen" class="py-6 " x-text="accordion.answer"></div>
+                    </div>
+                </template>
+
+                <div class="py-16 flex gap-8">
+                    <a href="#" class="btn text-white py-2  px-6 w-auto">Request for Demo</a>
+                    <a href="#" class="btn text-white py-2  px-6 w-auto">Sign up</a>
+                </div>
+
+            </div>
+            <div class="order-1 md:order-2 md:pt-0 pt-6">
+                <img src="./images/calender-image.png" alt="">
+            </div>
+        </div>
+
+
+        <!-- Customer Experience -->
+        <div class="md:py-16 py:3">
+            <div class="grid md:grid-cols-2  items-center">
+                <!-- left -->
+                <div class="md:p-0 p-6">
+                    <p class="tt-text-blue-100 font-normal text-3xl py-3">Customer Experience is the New Brand</p>
+                    <p>Travitime, helps you personalize your customer journey, increase engagement and
+                        gain customer satisfaction throughout their trip. Travitime is tailored to suit various
+                        verticals across travel industry.</p>
+                    <div class="h-10"></div>
+                    <div
+                        class="flex md:flex-row flex-col bg-white filter items-center  drop-shadow-md md:drop-shadow-2xl px-6 py-6 md:py-0 rounded-3xl gap-6">
+                        <img src="images/man-in-bamboo.png" class="md:h-40" alt="">
+                        <div>
+                            <p class="tt-text-blue-100 font-semibold text-2xl py-3">Organise & Grow </p>
+                            <p>From creating itineary to completing
+                                the tour Travitime organizes everything
+                                for you, so you can focus on your
+                                business growth.</p>
+
+                            <div class="flex items-center gap-4 py-3">
+                                <a href="" class="tt-text-blue-100 font-medium text-1xl py-3">Watch Video</a>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                    class="bi bi-play-circle fill-current text-red-600" viewBox="0 0 16 16">
+                                    <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
+                                    <path
+                                        d="M6.271 5.055a.5.5 0 0 1 .52.038l3.5 2.5a.5.5 0 0 1 0 .814l-3.5 2.5A.5.5 0 0 1 6 10.5v-5a.5.5 0 0 1 .271-.445z" />
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- right -->
+                <div>
+                    <div class="grid grid-cols-2">
+                        <div class="p-12 flex flex-col items-center text-center">
+                            <img src="images/icons/flight-icon.png" class="w-16" alt="">
+                            <p class="md:w-40 pt-4">Travel Agencies
+                                and Online Travel Agency </p>
+                        </div>
+
+                        <div class="p-12 flex flex-col items-center text-center">
+                            <img src="./images/icons/baggage-icon.png" class="w-16" alt="">
+                            <p class="md:w-40 pt-4">Small and Large
+                                Group Tour </p>
+                        </div>
+
+                        <div class="p-12 flex flex-col items-center text-center">
+                            <img src="./images/icons/event-icon.png" class="w-16" alt="">
+                            <p class="md:w-40 pt-4">Event and Activity
+                                Business</p>
+                        </div>
+
+                        <div class="p-12 flex flex-col items-center text-center">
+                            <img src="./images/icons/bag-icon.png" class="w-16" alt="">
+                            <p class="md:w-40 pt-4">Business Tour
+                                and Travel</p>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+
+    <!-- section4 -->
+    <div class="h-80 bg-cover bg-center text-center flex flex-col items-center justify-center"
+        style="background-image: url(./images/ballon-bg.jpg)">
+        <p class="text-white text-3xl">We have flexible plans for everyone.</p>
+        <p class="text-white">Limited user pricing starts as low as $6 per user /month billed annually.</p>
+        <a href="#" class="btn text-white py-2 mt-6  px-6  flex-none">View Pricing</a>
+    </div>
+
+    <!-- section5 -->
+    <div class="mx-auto md:max-w-7xl max-w-full">
+        <div class="grid md:grid-cols-2 gap-10 items-center">
+            <!-- left -->
+            <div class="md:p-0 p-6">
+                <p class="tt-text-blue-100 font-normal text-3xl py-3">Itinerary examples made with Travitime</p>
+                <p class="py-6">Hassle-free travel requires a end-to-end planning and carefully mapped out travel
+                    itinerary.
+                    Check out our digital itinerary created by some of our influential customers.<br><br>
+
+                    Start using Travitime for your travel business, digitally share everything your clients need
+                    at their fingertips and experience the change.</p>
+                <div class="mt-6 "><a href="#" class="btn text-white py-2  px-6 ">View Sample</a></div>
+
+            </div>
+
+            <!-- right -->
+            <div class="-mt-12 hidden md:block">
+                <img src="./images/tablet.png" alt="">
+            </div>
+        </div>
+    </div>
+
+    <div class="h-20"></div>
+    <!--section6-->
+    <div class="grid md:grid-cols-3 bg-blue-700 items-center bg-contain bg-no-repeat bg-right flight-bg ">
+        <!-- 1 -->
+        <div class="col-span-1 -mt-12 -ml-6">
+            <img src="./images/keyboard-mobile.png" class="w-full" alt="">
+        </div>
+        <!-- 2 -->
+        <div class="text-white p-6 md:p-0">
+            <p class="text-white text-2xl">Travitime App:</p>
+            <p class="text-white text-2xl">We built it for your customers</p>
+            <p class="text-white">Your customers get a simple free app to view itinerary, access
+                their travel documents, and stay connected with you throughout
+                their trip.</p>
+            <div class="flex mt-6">
+                <p>Download Now:</p>
+
+            </div>
+
+        </div>
+        <!-- 3 -->
+        <div class="hidden md:block">
+            <div class="-mb-60">
+                <img class="w-2/4" src="./images/man-with-baggage.png" alt="">
+            </div>
+        </div>
+    </div>
+
+    <!-- footer -->
+    <footer class="h-40 bg-blue-800">
+
+    </footer>
+
+
+
+    <script>
+
+        function myApp() {
+            return {
+                accordions: [
+                    {
+                        question: 'Digital itinerary',
+                        answer: 'Add tour and content items to your itineraries easily. Easily share beautiful white-label itineraries online via email or a shareable link. View itineraries on screen as PDF or have them printed.',
+                        isOpen: true,
+                        selected: 1
+                    },
+                    {
+                        question: 'Documents Vault',
+                        answer: 'Add tour and content items to your itineraries easily. Easily share beautiful white-label itineraries online via email or a shareable link. View itineraries on screen as PDF or have them printed.',
+                        isOpen: false,
+                        selected: 2
+                    },
+                    {
+                        question: 'Stay Connected',
+                        answer: 'Add tour and content items to your itineraries easily. Easily share beautiful white-label itineraries online via email or a shareable link. View itineraries on screen as PDF or have them printed.',
+                        isOpen: false,
+                        selected: 3
+                    },
+                    {
+                        question: 'Brand Experience',
+                        answer: 'Add tour and content items to your itineraries easily. Easily share beautiful white-label itineraries online via email or a shareable link. View itineraries on screen as PDF or have them printed.',
+                        isOpen: false,
+                        selected: 4
+                    }
+                ],
+
+                openDiv(accordion) {
+
+                    this.accordions.map(f => {
+                        if (f.question !== accordion.question) {
+                            f.isOpen = false;
+                        }
+                    })
+
+                    accordion.isOpen = !accordion.isOpen;
+                }
+            }
+        }
+    </script>
+
+
+</body>
+
+</html>

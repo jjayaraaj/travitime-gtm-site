@@ -1,0 +1,40 @@
+:root {
+  --tt-text-blue-100: #081d5d;
+  --tt-bg-orange-100: #ed6c35;
+}
+
+.tt-text-blue-100 {
+  color: #081d5d;
+}
+.tt-text-orange-100 {
+  color: #ed6c35;
+}
+
+.primary-nav a {
+  margin: 0 20px;
+  color: var(--tt-text-blue-100);
+  font-weight: 500;
+  font-size: 1rem;
+}
+
+.btn {
+  background-color: var(--tt-bg-orange-100);
+}
+
+.banner {
+  height: 450px;
+}
+.flight-bg {
+  background-image: url(./../images/flight.png);
+}
+
+@media screen and (max-width: 680px) {
+  .banner {
+    height: auto;
+    padding-top: 50px;
+    padding-bottom: 50px;
+  }
+  .flight-bg {
+    background-image: none;
+  }
+}
