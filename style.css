@@ -28,6 +28,10 @@
   background-image: url(./../images/flight.png);
 }
 
+footer {
+  background: #081d5d;
+}
+
 @media screen and (max-width: 680px) {
   .banner {
     height: auto;
